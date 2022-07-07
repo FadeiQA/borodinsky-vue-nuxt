@@ -1,5 +1,5 @@
 <template>
-  <component :is="sad ? 'div' : 'nuxt-link'" tag="a" class="button" :class="types.length ? types.map((type) => `button_${type}`) : ''" :to="to" @click="submit">
+  <component :is="to ? 'div' : 'nuxt-link'" tag="a" class="button" :class="classButton" :to="to">
     <slot />
   </component>
 </template>
@@ -15,23 +15,12 @@ export default {
     to: {
       type: String,
       default: ''
-    },
-    formcom: {
-      type: Object,
-      default: null
-    }
-  },
-  methods: {
-    submit() {
-      if (this.formcom) {
-        this.formcom.submit()
-      }
     }
   },
   computed: {
-    sad() {
-      return !!this.formcom
-    }
+    classButton() {
+      return this.types.length ? this.types.map((a) => `button_${a}`) : ''
+    },
   }
 }
 </script>

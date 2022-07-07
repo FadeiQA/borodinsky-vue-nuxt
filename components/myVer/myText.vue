@@ -1,7 +1,7 @@
 <template>
-  <p class="text" :class="{ 'text_hover': withAnimation }">
+  <component :is="withAnimation && to ? 'nuxt-link': 'p'" :to="to"  class="text" :class="{ 'text_hover': withAnimation }">
     <slot></slot>
-  </p>
+  </component>
 </template>
 
 <script>
@@ -11,6 +11,10 @@ export default {
     withAnimation: {
       type: Boolean,
       default: false
+    },
+    to: {
+      type: String,
+      default: ''
     }
   }
 }

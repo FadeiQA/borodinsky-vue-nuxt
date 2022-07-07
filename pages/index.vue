@@ -69,8 +69,6 @@ li {
   color: white;
 }
 
-
-
 .footer__friends{
   text-align: center;
   margin: 0 auto;
