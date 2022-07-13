@@ -1,7 +1,7 @@
 <template>
-  <component :is="to ? 'div' : 'nuxt-link'" tag="a" class="button" :class="classButton" :to="to">
+  <a class="button" :href="to" :class="classButton" @click.prevent="handleClick">
     <slot />
-  </component>
+  </a>
 </template>
 
 <script>
@@ -21,6 +21,14 @@ export default {
     classButton() {
       return this.types.length ? this.types.map((a) => `button_${a}`) : ''
     },
+  },
+  methods : {
+    handleClick() {
+      if (this.to) {
+        return this.$router.push(this.to)
+      }
+      this.$emit('click')
+    }
   }
 }
 </script>

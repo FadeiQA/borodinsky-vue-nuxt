@@ -52,10 +52,10 @@
       </template>
       <template v-slot:content-right>
         <my-text class="margin_lg">УКАЖИТЕ ЖЕЛАЕМУЮ ДАТУ И ВРЕМЯ И МЫ СВЯЖЕМСЯ С ВАМИ ДЛЯ ПОДТВЕРЖДЕНИЯ БРОНИ</my-text>
-        <my-form v-model="data" ref="asd"/>
+        <my-form @telChange="handleTel" :tel="tel" @nameChange="handleName" :name="name" @dateChange="handleDate" :date="date" @timeChange="handleTime" :time="time"/>
       </template>
       <template v-slot:footer-right>
-        <btn :types="['black', 'brown-hover', 'long']" :formcom="asd">
+        <btn :types="['black', 'brown-hover', 'long']" @click="submit" >
           отправить
         </btn>
       </template>
@@ -70,28 +70,35 @@ import Btn from "~/components/myVer/btn";
 import News from "~/components/myVer/news";
 import MyText from "~/components/myVer/myText";
 import MyForm from "~/components/myVer/myForm";
-
 export default {
   name: "MyMain",
   components: {MyForm, Btn, About, Board, News, MyText},
   methods: {
-    submit(_ev) {
-      console.log(_ev)
+    submit() {
+      console.log({tell: this.tel, name: this.name, date: this.date, time: this.time })
+    },
+    handleTel(telChange) {
+      this.tel = telChange
+    },
+    handleName(nameChange) {
+      this.name = nameChange
+    },
+    handleDate(dateChange) {
+      this.date = dateChange
+    },
+    handleTime(timeChange) {
+      a
+      this.time = timeChange
     }
   },
   data() {
     return {
-      data: {
-        name: '',
-        tel: '',
-        time: '',
-        date: '',
-      }
+      tel: '',
+      name: '',
+      date: '',
+      time: ''
     }
   },
-  mounted() {
-    this.asd = this.$refs.asd
-  }
 }
 </script>
 
